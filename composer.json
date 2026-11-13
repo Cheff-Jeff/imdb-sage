@@ -17,7 +17,14 @@
     }
   ],
   "keywords": [
-    "bedrock", "composer", "roots", "wordpress-composer", "wordpress", "wp-composer", "wp-config", "wp"
+    "bedrock",
+    "composer",
+    "roots",
+    "wordpress-composer",
+    "wordpress",
+    "wp-composer",
+    "wp-config",
+    "wp"
   ],
   "support": {
     "issues": "https://github.com/roots/bedrock/issues",
@@ -28,11 +35,17 @@
       "name": "wp-packages",
       "type": "composer",
       "url": "https://repo.wp-packages.org"
+    },
+    {
+      "no-api": true,
+      "type": "vcs",
+      "url": "git@github.com:lemone-com/plugin-acf-pro.git"
     }
   ],
   "require": {
     "php": ">=8.3",
     "composer/installers": "^2.0",
+    "lemone/plugin-acf-pro": "^6.8",
     "oscarotero/env": "^2.0",
     "roots/bedrock-autoloader": "^1.0",
     "roots/bedrock-disallow-indexing": "^2.0",
