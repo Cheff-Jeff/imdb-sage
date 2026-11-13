@@ -161,3 +161,12 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer',
     ] + $config);
 });
+
+/**
+ * Only show the admin bar on the front end to administrators.
+ *
+ * @return bool
+ */
+add_filter('show_admin_bar', function ($show) {
+    return current_user_can('manage_options') ? $show : false;
+});

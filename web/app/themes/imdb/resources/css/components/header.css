@@ -3,6 +3,11 @@
     @apply sticky top-0 z-40 border-b border-screen-800 bg-screen-900/90 backdrop-blur;
   }
 
+  /* Keep the sticky header below the WordPress admin bar (32px desktop, 46px tablet, not fixed on phones) */
+  .admin-bar .site-header {
+    @apply top-8 max-[782px]:top-11.5 max-[600px]:top-0;
+  }
+
   .site-header__inner {
     @apply flex flex-wrap items-center gap-x-4 gap-y-3 py-3 md:flex-nowrap;
   }
@@ -26,7 +31,7 @@
 
   /* Search */
   .site-search {
-    @apply relative order-last w-full md:order-none md:max-w-xl md:flex-1;
+    @apply relative order-last w-full md:order-0 md:max-w-xl md:flex-1;
   }
 
   .site-search__icon {

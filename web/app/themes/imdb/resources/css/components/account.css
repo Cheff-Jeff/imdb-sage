@@ -1,6 +1,6 @@
 @layer components {
   .account {
-    @apply mx-auto w-full max-w-3xl px-4 py-12 sm:px-6 md:py-16;
+    @apply mx-auto w-full max-w-5xl px-4 py-12 sm:px-6 md:py-16;
   }
 
   .account__header {
@@ -49,5 +49,46 @@
 
   .account__actions {
     @apply mt-8 flex flex-col gap-3 sm:flex-row;
+  }
+
+  /* ---------- Saved movies ---------- */
+  .account__saved {
+    @apply mt-12;
+  }
+
+  .account__saved-header {
+    @apply flex flex-wrap items-baseline justify-between gap-2;
+  }
+
+  .account__saved-count {
+    @apply mb-5 text-sm text-zinc-400;
+  }
+
+  .account__movies {
+    @apply grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 md:grid-cols-4;
+  }
+
+  .account__empty {
+    @apply flex flex-col items-center gap-4 rounded-2xl border border-dashed border-screen-700 px-6 py-12 text-center text-zinc-400;
+  }
+
+  .account__empty .icon-bookmark {
+    @apply size-10 text-screen-700;
+  }
+
+  .account__empty p {
+    @apply max-w-sm;
+  }
+
+  .saved-movie {
+    @apply flex flex-col;
+  }
+
+  .saved-movie__remove {
+    @apply mt-2;
+  }
+
+  .saved-movie__remove-button {
+    @apply text-xs font-medium text-zinc-500 underline-offset-4 hover:text-red-300 hover:underline;
   }
 }

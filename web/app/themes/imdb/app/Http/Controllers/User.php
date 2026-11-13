@@ -76,8 +76,44 @@ class User
         }
 
         $currentUser = wp_get_current_user();
+        $userId = get_current_user_id();
+        $savedMovies = get_field('user_saved_movies', "user_{$userId}", false);
 
-        return view('user', ['currentUser' => $currentUser]);
+        return view('user', ['currentUser' => $currentUser, 'savedMovies' => $savedMovies]);
+    }
+
+    public function saveMovie(Request $request)
+    {
+        if (!$request->isMethod('post')) {
+            return back();
+        }
+
+        if (!$request->has(['movieId'])) {
+            return back();
+        }
+
+        $userId = get_current_user_id();
+
+        if (!$userId) {
+            return back();
+        }
+
+        $post = intval($request->input('movieId'));
+        $field = get_field('user_saved_movies', "user_{$userId}", false) ?: [];
+
+        if (!in_array($post, array_map('intval', $field), true)) {
+            $field[] = $post;
+            update_field('user_saved_movies', array_map('intval', $field), "user_{$userId}");
+        } else {
+            $fields = array_values(array_filter(
+                array_map('intval', $field),
+                fn($id) => $id !== $post,
+            ));
+
+            update_field('user_saved_movies', $fields, "user_{$userId}");
+        }
+
+        return back();
     }
 
     public function signInView()

@@ -34,7 +34,7 @@
   }
 
   .movie-card__poster {
-    @apply relative aspect-[2/3] overflow-hidden rounded-xl bg-screen-800 shadow-lg shadow-black/40 ring-1 ring-white/5 transition duration-300;
+    @apply relative aspect-2/3 overflow-hidden rounded-xl bg-screen-800 shadow-lg shadow-black/40 ring-1 ring-white/5 transition duration-300;
   }
 
   .movie-card__link:hover .movie-card__poster,
@@ -68,7 +68,7 @@
 
   /* Shown when a movie has no featured image */
   .poster-placeholder {
-    @apply flex size-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-screen-800 to-screen-900 p-4 text-center;
+    @apply flex size-full flex-col items-center justify-center gap-3 bg-linear-to-br from-screen-800 to-screen-900 p-4 text-center;
   }
 
   .poster-placeholder__icon {
@@ -90,7 +90,7 @@
 
   /* Fade the backdrop into the page */
   .movie-hero::after {
-    @apply absolute inset-0 -z-10 bg-gradient-to-t from-screen-950 via-screen-950/80 to-screen-950/40 content-[''];
+    @apply absolute inset-0 -z-10 bg-linear-to-t from-screen-950 via-screen-950/80 to-screen-950/40 content-[''];
   }
 
   .movie-hero__inner {
@@ -98,7 +98,7 @@
   }
 
   .movie-hero__poster {
-    @apply mx-auto aspect-[2/3] w-48 overflow-hidden rounded-xl bg-screen-800 shadow-2xl shadow-black/60 ring-1 ring-white/10 md:mx-0 md:w-full;
+    @apply mx-auto aspect-2/3 w-48 overflow-hidden rounded-xl bg-screen-800 shadow-2xl shadow-black/60 ring-1 ring-white/10 md:mx-0 md:w-full;
   }
 
   .movie-hero__poster img {
@@ -127,6 +127,23 @@
 
   .movie-hero__tagline {
     @apply mt-5 max-w-2xl text-lg text-zinc-200 md:text-xl;
+  }
+
+  .movie-hero__actions {
+    @apply mt-6 flex flex-wrap justify-center gap-3 md:justify-start;
+  }
+
+  /* Save / saved toggle */
+  .save-toggle {
+    @apply inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/5 px-4 py-2.5 text-sm font-semibold text-zinc-100 backdrop-blur transition hover:border-marquee-400 hover:text-marquee-300;
+  }
+
+  .save-toggle .icon-bookmark {
+    @apply size-5;
+  }
+
+  .save-toggle--saved {
+    @apply border-marquee-400 bg-marquee-400 text-screen-950 hover:bg-marquee-300 hover:text-screen-950;
   }
 
   .movie-body {

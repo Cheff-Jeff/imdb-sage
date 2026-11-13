@@ -17,6 +17,22 @@ class Movie extends Composer
     ];
 
     /**
+     * Whether the logged in user has saved the current movie.
+     */
+    public function isSaved(): bool
+    {
+        $userId = get_current_user_id();
+
+        if (! $userId) {
+            return false;
+        }
+
+        $saved = get_field('user_saved_movies', "user_{$userId}", false) ?: [];
+
+        return in_array(get_queried_object_id(), array_map('intval', (array) $saved), true);
+    }
+
+    /**
      * Other movies to show below the current one.
      */
     public function relatedMovies(): Collection

@@ -12,5 +12,6 @@ Route::get('/inloggen', [User::class, 'signInView'])->name('sign-in');
 Route::post('/inloggen', [User::class, 'signIn'])->name('sign-in.post');
 Route::get('/account', [User::class, 'accountView'])->name('account');
 
+Route::post('/store-movie', [User::class, 'saveMovie'])->name('saveMovie');
 
 Route::get('/sign-off', [User::class, 'signOff'])->name('sign-off');
