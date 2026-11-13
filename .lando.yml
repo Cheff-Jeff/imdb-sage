@@ -1,0 +1,17 @@
+name: imdb
+recipe: wordpress
+env_file:
+  - .lando.env
+config:
+  php: "8.4"
+  via: nginx
+  webroot: web
+  xdebug: "debug,develop"
+
+services:
+  database:
+    type: mariadb:11.4
+  pma:
+    type: phpmyadmin
+    hosts:
+      - database
