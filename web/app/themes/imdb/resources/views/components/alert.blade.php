@@ -3,13 +3,8 @@
   'message' => null,
 ])
 
-@php($class = match ($type) {
-  'success' => 'text-green-50 bg-green-400',
-  'caution' => 'text-yellow-50 bg-yellow-400',
-  'warning' => 'text-red-50 bg-red-400',
-  default => 'text-indigo-50 bg-indigo-400',
-})
+@php($modifier = in_array($type, ['success', 'caution', 'warning'], true) ? $type : 'info')
 
-<div {{ $attributes->merge(['class' => "px-2 py-1 {$class}"]) }}>
+<div {{ $attributes->merge(['class' => "alert alert--{$modifier}"]) }} role="{{ $modifier === 'warning' ? 'alert' : 'status' }}">
   {!! $message ?? $slot !!}
 </div>

@@ -1,0 +1,58 @@
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-screen-950 font-sans text-zinc-100 antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display font-normal tracking-wide;
+  }
+
+  a {
+    @apply transition-colors;
+  }
+
+  ::selection {
+    @apply bg-marquee-400 text-screen-950;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-marquee-400;
+  }
+}
+
+@layer components {
+  #app {
+    @apply flex min-h-screen flex-col;
+  }
+
+  .main {
+    @apply flex-1;
+  }
+
+  .skip-link {
+    @apply sr-only;
+  }
+
+  .skip-link:focus {
+    @apply not-sr-only fixed top-3 left-3 z-50 rounded-md bg-marquee-400 px-4 py-2 font-semibold text-screen-950;
+  }
+
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-title {
+    @apply mb-5 flex items-center gap-3 text-3xl text-zinc-50;
+  }
+
+  /* Gold bar in front of section titles, like on a cinema marquee */
+  .section-title::before {
+    @apply block h-7 w-1 rounded-full bg-marquee-400 content-[''];
+  }
+}

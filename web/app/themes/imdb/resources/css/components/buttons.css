@@ -1,0 +1,21 @@
+@layer components {
+  .button {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold whitespace-nowrap transition;
+  }
+
+  .button--primary {
+    @apply bg-marquee-400 text-screen-950 hover:bg-marquee-300;
+  }
+
+  .button--ghost {
+    @apply text-zinc-200 hover:bg-screen-800 hover:text-white;
+  }
+
+  .button--outline {
+    @apply border border-screen-700 text-zinc-200 hover:border-zinc-500 hover:text-white;
+  }
+
+  .button--block {
+    @apply w-full py-3 text-base;
+  }
+}

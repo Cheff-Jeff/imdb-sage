@@ -1,0 +1,82 @@
+@layer components {
+  .site-header {
+    @apply sticky top-0 z-40 border-b border-screen-800 bg-screen-900/90 backdrop-blur;
+  }
+
+  .site-header__inner {
+    @apply flex flex-wrap items-center gap-x-4 gap-y-3 py-3 md:flex-nowrap;
+  }
+
+  /* Logo */
+  .brand {
+    @apply flex shrink-0 items-center gap-2 text-white;
+  }
+
+  .brand__icon {
+    @apply size-8 text-marquee-400;
+  }
+
+  .brand__name {
+    @apply font-display text-3xl leading-none tracking-wider;
+  }
+
+  .brand:hover .brand__name {
+    @apply text-marquee-300;
+  }
+
+  /* Search */
+  .site-search {
+    @apply relative order-last w-full md:order-none md:max-w-xl md:flex-1;
+  }
+
+  .site-search__icon {
+    @apply pointer-events-none absolute top-1/2 left-3 size-5 -translate-y-1/2 text-zinc-500;
+  }
+
+  .site-search__input {
+    @apply w-full rounded-full border border-screen-700 bg-screen-850 py-2 pr-4 pl-10 text-sm text-zinc-100 placeholder:text-zinc-500 focus:border-marquee-400 focus:outline-none;
+  }
+
+  /* Navigation */
+  .site-nav {
+    @apply ml-auto flex items-center gap-1;
+  }
+
+  .site-nav__link {
+    @apply rounded-lg px-3 py-2 text-sm font-medium text-zinc-300 hover:bg-screen-800 hover:text-white;
+  }
+
+  .site-nav__link--active {
+    @apply text-marquee-400;
+  }
+
+  /* wp_nav_menu() output */
+  .site-nav .nav {
+    @apply hidden items-center gap-1 lg:flex;
+  }
+
+  .site-nav .nav a {
+    @apply rounded-lg px-3 py-2 text-sm font-medium text-zinc-300 hover:bg-screen-800 hover:text-white;
+  }
+
+  .site-nav .nav .current-menu-item > a {
+    @apply text-marquee-400;
+  }
+
+  .site-nav .nav .sub-menu {
+    @apply hidden;
+  }
+
+  /* Account */
+  .account-chip {
+    @apply flex items-center gap-2 rounded-full py-1 pr-3 pl-1 text-sm font-medium text-zinc-200 hover:bg-screen-800 hover:text-white;
+  }
+
+  .account-chip__avatar {
+    @apply size-8 rounded-full ring-2 ring-marquee-400/60;
+  }
+
+  .account-chip__name {
+    @apply hidden max-w-32 truncate sm:inline;
+  }
+}

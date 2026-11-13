@@ -1,0 +1,25 @@
+@layer components {
+  .site-footer {
+    @apply mt-20 border-t border-screen-800 bg-screen-900;
+  }
+
+  .site-footer__inner {
+    @apply flex flex-col gap-6 py-10 md:flex-row md:items-center md:justify-between;
+  }
+
+  .site-footer__tagline {
+    @apply mt-2 text-sm text-zinc-400;
+  }
+
+  .site-footer__links {
+    @apply flex flex-wrap gap-x-6 gap-y-2 text-sm;
+  }
+
+  .site-footer__links a {
+    @apply text-zinc-400 hover:text-marquee-400;
+  }
+
+  .site-footer__copy {
+    @apply text-xs text-zinc-500;
+  }
+}

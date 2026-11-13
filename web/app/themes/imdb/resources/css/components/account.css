@@ -1,0 +1,53 @@
+@layer components {
+  .account {
+    @apply mx-auto w-full max-w-3xl px-4 py-12 sm:px-6 md:py-16;
+  }
+
+  .account__header {
+    @apply flex flex-col items-center gap-6 text-center sm:flex-row sm:text-left;
+  }
+
+  .account__avatar {
+    @apply size-28 shrink-0 rounded-full ring-4 ring-marquee-400 ring-offset-4 ring-offset-screen-950;
+  }
+
+  .account__eyebrow {
+    @apply text-xs font-semibold tracking-[0.2em] text-marquee-400 uppercase;
+  }
+
+  .account__name {
+    @apply text-5xl leading-none text-white md:text-6xl;
+  }
+
+  .account__email {
+    @apply mt-1 text-zinc-400;
+  }
+
+  .account__card {
+    @apply mt-10 rounded-2xl border border-screen-800 bg-screen-900 p-6 sm:p-8;
+  }
+
+  .account__details {
+    @apply divide-y divide-screen-800;
+  }
+
+  .account__row {
+    @apply grid gap-1 py-4 first:pt-0 last:pb-0 sm:grid-cols-3 sm:gap-4;
+  }
+
+  .account__row dt {
+    @apply text-sm font-medium text-zinc-400;
+  }
+
+  .account__row dd {
+    @apply text-zinc-100 sm:col-span-2;
+  }
+
+  .account__badge {
+    @apply inline-flex rounded-full bg-marquee-400/15 px-3 py-0.5 text-sm font-medium text-marquee-300;
+  }
+
+  .account__actions {
+    @apply mt-8 flex flex-col gap-3 sm:flex-row;
+  }
+}

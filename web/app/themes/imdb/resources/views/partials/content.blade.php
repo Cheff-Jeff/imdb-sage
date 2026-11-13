@@ -1,4 +1,4 @@
-<article @php(post_class())>
+<article @php(post_class('entry'))>
   <header>
     <h2 class="entry-title">
       <a href="{{ get_permalink() }}">

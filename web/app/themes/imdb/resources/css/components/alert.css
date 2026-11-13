@@ -1,0 +1,25 @@
+@layer components {
+  .alert {
+    @apply rounded-lg border px-4 py-3 text-sm;
+  }
+
+  .alert--info {
+    @apply border-sky-500/30 bg-sky-500/10 text-sky-200;
+  }
+
+  .alert--success {
+    @apply border-emerald-500/30 bg-emerald-500/10 text-emerald-200;
+  }
+
+  .alert--caution {
+    @apply border-marquee-500/30 bg-marquee-500/10 text-marquee-300;
+  }
+
+  .alert--warning {
+    @apply border-red-500/30 bg-red-500/10 text-red-200;
+  }
+
+  .alert ul {
+    @apply list-inside list-disc space-y-1;
+  }
+}

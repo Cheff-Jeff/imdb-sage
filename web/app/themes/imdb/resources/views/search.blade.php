@@ -1,19 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-  @include('partials.page-header')
+  <div class="page-shell">
+    @include('partials.page-header')
 
-  @if (! have_posts())
-    <x-alert type="warning">
-      {!! __('Sorry, no results were found.', 'sage') !!}
-    </x-alert>
+    @if (! have_posts())
+      <x-alert type="caution">
+        {{ __('Geen films gevonden. Probeer een andere zoekterm.', 'sage') }}
+      </x-alert>
 
-    {!! get_search_form(false) !!}
-  @endif
+      {!! get_search_form(false) !!}
+    @else
+      <div class="movie-grid">
+        @while(have_posts()) @php(the_post())
+          @includeFirst(['partials.content-' . get_post_type(), 'partials.content-search'])
+        @endwhile
+      </div>
 
-  @while(have_posts()) @php(the_post())
-    @include('partials.content-search')
-  @endwhile
-
-  {!! get_the_posts_navigation() !!}
+      {!! get_the_posts_pagination(['mid_size' => 1]) !!}
+    @endif
+  </div>
 @endsection

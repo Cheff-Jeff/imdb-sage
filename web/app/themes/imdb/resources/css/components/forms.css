@@ -1,0 +1,29 @@
+@layer components {
+  .form {
+    @apply space-y-5;
+  }
+
+  .form__field {
+    @apply space-y-1.5;
+  }
+
+  .form__label {
+    @apply block text-sm font-medium text-zinc-300;
+  }
+
+  .form__input {
+    @apply block w-full rounded-lg border border-screen-700 bg-screen-950 px-4 py-3 text-zinc-100 transition placeholder:text-zinc-600 focus:border-marquee-400 focus:ring-2 focus:ring-marquee-400/30 focus:outline-none;
+  }
+
+  .form__input[aria-invalid='true'] {
+    @apply border-red-500/70;
+  }
+
+  .form__hint {
+    @apply text-xs text-zinc-500;
+  }
+
+  .form__error {
+    @apply text-xs text-red-300;
+  }
+}

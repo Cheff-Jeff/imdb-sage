@@ -1,0 +1,27 @@
+/* Markup from the_posts_pagination() / get_the_posts_navigation() */
+@layer components {
+  .navigation {
+    @apply mt-12;
+  }
+
+  .navigation .nav-links {
+    @apply flex flex-wrap items-center justify-center gap-2;
+  }
+
+  .navigation .page-numbers {
+    @apply inline-flex min-w-10 items-center justify-center rounded-lg border border-screen-700 px-3 py-2 text-sm font-medium text-zinc-300 hover:border-marquee-400 hover:text-marquee-400;
+  }
+
+  .navigation .page-numbers.current {
+    @apply border-marquee-400 bg-marquee-400 text-screen-950 hover:text-screen-950;
+  }
+
+  .navigation .page-numbers.dots {
+    @apply border-transparent hover:border-transparent hover:text-zinc-300;
+  }
+
+  .navigation .nav-previous a,
+  .navigation .nav-next a {
+    @apply inline-flex rounded-lg border border-screen-700 px-4 py-2 text-sm font-medium text-zinc-300 hover:border-marquee-400 hover:text-marquee-400;
+  }
+}
