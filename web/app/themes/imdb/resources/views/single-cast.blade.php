@@ -12,11 +12,18 @@
     <article @php(post_class('person'))>
       <header class="person-hero">
         <div class="person-hero__inner container-page">
-          <figure class="person-hero__photo">
-            @if (has_post_thumbnail())
-              {!! get_the_post_thumbnail(null, 'large', ['alt' => sprintf(__('Foto van %s', 'sage'), get_the_title())]) !!}
-            @else
-              @include('partials.person-placeholder')
+          <figure class="person-hero__figure">
+            <div class="person-hero__photo">
+              @if (has_post_thumbnail())
+                {!! get_the_post_thumbnail(null, 'large', ['alt' => sprintf(__('Foto van %s', 'sage'), get_the_title())]) !!}
+              @else
+                @include('partials.person-placeholder')
+              @endif
+            </div>
+
+            {{-- Photo credit from the media library caption (required for CC BY / CC BY-SA photos) --}}
+            @if (has_post_thumbnail() && ($photoCredit = wp_get_attachment_caption(get_post_thumbnail_id())))
+              <figcaption class="person-hero__credit">{{ $photoCredit }}</figcaption>
             @endif
           </figure>
 

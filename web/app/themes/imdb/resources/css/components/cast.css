@@ -97,8 +97,16 @@
     @apply grid gap-8 py-10 md:grid-cols-[15rem_1fr] md:items-end md:gap-12 md:py-16;
   }
 
+  .person-hero__figure {
+    @apply mx-auto w-44 md:mx-0 md:w-full;
+  }
+
   .person-hero__photo {
-    @apply mx-auto aspect-3/4 w-44 overflow-hidden rounded-2xl bg-screen-800 shadow-2xl shadow-black/60 ring-1 ring-white/10 md:mx-0 md:w-full;
+    @apply aspect-3/4 w-full overflow-hidden rounded-2xl bg-screen-800 shadow-2xl shadow-black/60 ring-1 ring-white/10;
+  }
+
+  .person-hero__credit {
+    @apply mt-2 text-center text-[0.65rem] leading-snug text-zinc-500 md:text-left;
   }
 
   .person-hero__photo img {
