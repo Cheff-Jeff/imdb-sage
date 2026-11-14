@@ -1,4 +1,5 @@
 @php($onMovies = is_post_type_archive('movie') || is_singular('movie'))
+@php($onCast = is_post_type_archive('cast') || is_singular('cast'))
 
 <header class="site-header">
   <div class="site-header__inner container-page">
@@ -33,6 +34,14 @@
         @if ($onMovies) aria-current="page" @endif
       >
         {{ __('Films', 'sage') }}
+      </a>
+
+      <a
+        href="{{ get_post_type_archive_link('cast') }}"
+        @class(['site-nav__link', 'site-nav__link--active' => $onCast])
+        @if ($onCast) aria-current="page" @endif
+      >
+        {{ __('Cast', 'sage') }}
       </a>
 
       @if (has_nav_menu('primary_navigation'))

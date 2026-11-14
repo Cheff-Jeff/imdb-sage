@@ -9,6 +9,7 @@
 
     <ul class="site-footer__links">
       <li><a href="{{ get_post_type_archive_link('movie') }}">{{ __('Alle films', 'sage') }}</a></li>
+      <li><a href="{{ get_post_type_archive_link('cast') }}">{{ __('Cast & crew', 'sage') }}</a></li>
       @if (is_user_logged_in())
         <li><a href="{{ route('account') }}">{{ __('Mijn account', 'sage') }}</a></li>
       @else

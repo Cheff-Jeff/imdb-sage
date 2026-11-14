@@ -16,6 +16,7 @@
 @import "./components/account.css";
 @import "./components/movies.css";
 @import "./components/reviews.css";
+@import "./components/cast.css";
 @import "./components/pagination.css";
 
 @source "../../app/**/*.php";

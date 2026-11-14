@@ -1,0 +1,241 @@
+@layer components {
+  /* ---------- Filter chips (archive + professions on detail page) ---------- */
+  .filter-chips {
+    @apply flex flex-wrap gap-2;
+  }
+
+  .filter-chip {
+    @apply inline-flex items-center rounded-full border border-screen-700 px-3.5 py-1.5 text-sm font-medium text-zinc-300 hover:border-marquee-400 hover:text-marquee-300;
+  }
+
+  .filter-chip--active {
+    @apply border-marquee-400 bg-marquee-400 text-screen-950 hover:text-screen-950;
+  }
+
+  /* ---------- Archive ---------- */
+  .cast-archive {
+    @apply py-10 md:py-14;
+  }
+
+  .cast-archive__header {
+    @apply mb-8 flex flex-col gap-5 md:flex-row md:items-end md:justify-between;
+  }
+
+  .cast-archive__title {
+    @apply text-6xl leading-none text-white md:text-7xl;
+  }
+
+  .cast-archive__count {
+    @apply mt-2 text-sm text-zinc-400;
+  }
+
+  .cast-archive__empty {
+    @apply rounded-2xl border border-dashed border-screen-700 px-6 py-12 text-center text-zinc-400;
+  }
+
+  .person-grid {
+    @apply grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6;
+  }
+
+  /* ---------- Person card ---------- */
+  .person-card__link {
+    @apply block;
+  }
+
+  .person-card__photo {
+    @apply relative aspect-3/4 overflow-hidden rounded-xl bg-screen-800 shadow-lg shadow-black/40 ring-1 ring-white/5 transition duration-300;
+  }
+
+  .person-card__link:hover .person-card__photo,
+  .person-card__link:focus-visible .person-card__photo {
+    @apply -translate-y-1 ring-2 ring-marquee-400;
+  }
+
+  .person-card__image {
+    @apply size-full object-cover object-top grayscale-[35%] transition duration-500;
+  }
+
+  .person-card__link:hover .person-card__image {
+    @apply scale-105 grayscale-0;
+  }
+
+  .person-card__body {
+    @apply mt-3;
+  }
+
+  .person-card__name {
+    @apply font-sans text-sm font-semibold tracking-normal text-zinc-100;
+  }
+
+  .person-card__link:hover .person-card__name {
+    @apply text-marquee-400;
+  }
+
+  .person-card__professions {
+    @apply mt-0.5 text-xs text-marquee-300/80;
+  }
+
+  .person-card__meta {
+    @apply mt-0.5 text-xs text-zinc-500;
+  }
+
+  /* Shown when a person has no featured image */
+  .person-placeholder {
+    @apply flex size-full items-center justify-center bg-linear-to-br from-screen-800 to-screen-900;
+  }
+
+  .person-placeholder__icon {
+    @apply size-1/2 max-h-24 text-screen-700;
+  }
+
+  /* ---------- Detail page ---------- */
+  .person-hero {
+    @apply relative overflow-hidden border-b border-screen-800 bg-linear-to-b from-screen-900 to-screen-950;
+  }
+
+  .person-hero__inner {
+    @apply grid gap-8 py-10 md:grid-cols-[15rem_1fr] md:items-end md:gap-12 md:py-16;
+  }
+
+  .person-hero__photo {
+    @apply mx-auto aspect-3/4 w-44 overflow-hidden rounded-2xl bg-screen-800 shadow-2xl shadow-black/60 ring-1 ring-white/10 md:mx-0 md:w-full;
+  }
+
+  .person-hero__photo img {
+    @apply size-full object-cover object-top;
+  }
+
+  .person-hero__info {
+    @apply text-center md:text-left;
+  }
+
+  .person-hero__name {
+    @apply mt-3 text-6xl leading-[0.9] text-white md:text-8xl;
+  }
+
+  .person-hero__professions {
+    @apply mt-4 flex flex-wrap justify-center gap-2 md:justify-start;
+  }
+
+  .person-hero__meta {
+    @apply mt-4 text-sm text-zinc-400;
+  }
+
+  .person-hero__tagline {
+    @apply mt-4 max-w-2xl text-lg text-zinc-200;
+  }
+
+  .person-section {
+    @apply py-12;
+  }
+
+  .person-section + .person-section {
+    @apply border-t border-screen-800;
+  }
+
+  /* Filmography list */
+  .filmography {
+    @apply grid gap-3 md:grid-cols-2;
+  }
+
+  .filmography__link {
+    @apply flex items-center gap-4 rounded-2xl border border-screen-800 bg-screen-900 p-3 pr-5 transition hover:border-marquee-400/60 hover:bg-screen-850;
+  }
+
+  .filmography__poster {
+    @apply aspect-2/3 w-16 shrink-0 overflow-hidden rounded-lg bg-screen-800;
+  }
+
+  .filmography__poster img {
+    @apply size-full object-cover;
+  }
+
+  .filmography__poster .poster-placeholder__title {
+    @apply text-xs;
+  }
+
+  .filmography__poster .poster-placeholder__icon {
+    @apply size-5;
+  }
+
+  .filmography__body {
+    @apply min-w-0 flex-1;
+  }
+
+  .filmography__title {
+    @apply font-sans text-base font-semibold tracking-normal text-white;
+  }
+
+  .filmography__link:hover .filmography__title {
+    @apply text-marquee-400;
+  }
+
+  .filmography__role {
+    @apply mt-1 text-sm text-zinc-300;
+  }
+
+  .filmography__as {
+    @apply text-zinc-500 italic;
+  }
+
+  .filmography__arrow {
+    @apply text-zinc-600 transition;
+  }
+
+  .filmography__link:hover .filmography__arrow {
+    @apply translate-x-1 text-marquee-400;
+  }
+
+  /* ---------- Cast on the movie page ---------- */
+  .movie-cast {
+    @apply border-t border-screen-800 py-12;
+  }
+
+  .movie-cast__header {
+    @apply flex flex-wrap items-baseline justify-between gap-2;
+  }
+
+  .movie-cast__all {
+    @apply mb-5 text-sm font-medium text-zinc-400 hover:text-marquee-400;
+  }
+
+  .cast-list {
+    @apply grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+
+  .cast-credit {
+    @apply flex items-center gap-3 rounded-2xl border border-screen-800 bg-screen-900 p-3 transition hover:border-marquee-400/60 hover:bg-screen-850;
+  }
+
+  .cast-credit__photo {
+    @apply size-14 shrink-0 overflow-hidden rounded-full bg-screen-800 ring-2 ring-screen-700;
+  }
+
+  .cast-credit:hover .cast-credit__photo {
+    @apply ring-marquee-400;
+  }
+
+  .cast-credit__photo img {
+    @apply size-full object-cover object-top;
+  }
+
+  .cast-credit__photo .person-placeholder__icon {
+    @apply size-7;
+  }
+
+  .cast-credit__body {
+    @apply flex min-w-0 flex-col;
+  }
+
+  .cast-credit__name {
+    @apply truncate font-semibold text-zinc-100;
+  }
+
+  .cast-credit:hover .cast-credit__name {
+    @apply text-marquee-400;
+  }
+
+  .cast-credit__role {
+    @apply truncate text-sm text-zinc-400;
+  }
+}

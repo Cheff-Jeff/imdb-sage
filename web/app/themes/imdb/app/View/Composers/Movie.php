@@ -96,6 +96,50 @@ class Movie extends Composer
     }
 
     /**
+     * People linked to this movie via the "movies_casting" repeater on the cast post type.
+     *
+     * The link is stored on the cast side (movies_casting_{n}_movie_post), so we look it up
+     * in one query instead of loading every cast member.
+     *
+     * @return Collection<int, array{person: \WP_Post, roles: string[]}>
+     */
+    public function cast(): Collection
+    {
+        global $wpdb;
+
+        $rows = $wpdb->get_results($wpdb->prepare(
+            "SELECT pm.post_id, pm.meta_key
+             FROM {$wpdb->postmeta} pm
+             INNER JOIN {$wpdb->posts} p ON p.ID = pm.post_id
+             WHERE p.post_type = 'cast'
+               AND p.post_status = 'publish'
+               AND pm.meta_key LIKE %s
+               AND pm.meta_value = %s",
+            $wpdb->esc_like('movies_casting_') . '%' . $wpdb->esc_like('_movie_post'),
+            (string) get_queried_object_id(),
+        ));
+
+        return collect($rows)
+            ->groupBy('post_id')
+            ->map(fn ($credits, $personId) => [
+                'person' => get_post((int) $personId),
+                'roles' => $credits
+                    ->map(fn ($credit) => get_post_meta(
+                        $credit->post_id,
+                        preg_replace('/_movie_post$/', '_role', $credit->meta_key),
+                        true,
+                    ))
+                    ->filter()
+                    ->unique()
+                    ->values()
+                    ->all(),
+            ])
+            ->filter(fn ($credit) => $credit['person'] instanceof \WP_Post)
+            ->sortBy(fn ($credit) => $credit['person']->post_title)
+            ->values();
+    }
+
+    /**
      * Other movies to show below the current one.
      */
     public function relatedMovies(): Collection

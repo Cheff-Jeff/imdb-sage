@@ -89,6 +89,9 @@
           </section>
         @endif
 
+        {{-- Composer methods are invokable: $cast() runs the query --}}
+        @include ('partials.movie-cast', ['credits' => $cast()])
+
         @include ('partials.movie-reviews', ['reviews' => $reviews, 'stats' => $stats, 'hasReviews' => $hasReviews()])
 
         @if ($relatedMovies->isNotEmpty())
