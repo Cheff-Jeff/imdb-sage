@@ -3,6 +3,9 @@
 @section ('content')
   @while (have_posts())
     @php (the_post())
+    {{-- Composer methods are invokable objects: call once and reuse the array. --}}
+    @php ($stats = $reviewStats())
+
     <article @php (post_class('movie'))>
       <header class="movie-hero">
         @if (has_post_thumbnail())
@@ -26,6 +29,16 @@
             <h1 class="movie-hero__title">{!! get_the_title() !!}</h1>
 
             <p class="movie-hero__meta">
+              @if ($stats['average'] !== null)
+                <a class="movie-hero__rating" href="#reviews">
+                  @include ('partials.icon-star')
+                  <strong>{{ number_format_i18n($stats['average'], 1) }}</strong>/5
+                  <span class="movie-hero__rating-count">
+                    ({{ sprintf(_n('%s review', '%s reviews', $stats['count'], 'sage'), number_format_i18n($stats['count'])) }})
+                  </span>
+                </a>
+                <span class="movie-hero__dot" aria-hidden="true">&bull;</span>
+              @endif
               <span>{{ __('Film', 'sage') }}</span>
               <span class="movie-hero__dot" aria-hidden="true">&bull;</span>
               <span>
@@ -41,23 +54,23 @@
             <div class="movie-hero__actions">
               @if (is_user_logged_in())
                 {{-- Composer methods are invokable objects: call it, or it is always truthy. --}}
-                @php($saved = $isSaved())
+                @php ($saved = $isSaved())
 
                 <form action="{{ route('saveMovie') }}" method="post">
                   <input type="hidden" name="movieId" value="{{ get_the_ID() }}" />
 
                   <button
                     type="submit"
-                    @class(['save-toggle', 'save-toggle--saved' => $saved])
+                    @class (['save-toggle', 'save-toggle--saved' => $saved])
                     aria-pressed="{{ $saved ? 'true' : 'false' }}"
                   >
-                    @include('partials.icon-bookmark', ['filled' => $saved])
+                    @include ('partials.icon-bookmark', ['filled' => $saved])
                     <span>{{ $saved ? __('Opgeslagen', 'sage') : __('Opslaan', 'sage') }}</span>
                   </button>
                 </form>
               @else
                 <a class="save-toggle" href="{{ route('sign-in') }}">
-                  @include('partials.icon-bookmark', ['filled' => false])
+                  @include ('partials.icon-bookmark', ['filled' => false])
                   <span>{{ __('Log in om op te slaan', 'sage') }}</span>
                 </a>
               @endif
@@ -75,6 +88,8 @@
             </div>
           </section>
         @endif
+
+        @include ('partials.movie-reviews', ['reviews' => $reviews, 'stats' => $stats, 'hasReviews' => $hasReviews()])
 
         @if ($relatedMovies->isNotEmpty())
           <section class="movie-related">

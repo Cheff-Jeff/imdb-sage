@@ -26,4 +26,12 @@
   .form__error {
     @apply text-xs text-red-300;
   }
+
+  .form__actions {
+    @apply flex flex-col gap-3;
+  }
+
+  .form__actions--split {
+    @apply sm:flex-row sm:items-center;
+  }
 }

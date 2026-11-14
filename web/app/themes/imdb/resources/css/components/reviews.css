@@ -1,0 +1,303 @@
+@layer components {
+  /* ---------- Read-only stars ---------- */
+  .stars {
+    @apply inline-flex items-center gap-0.5;
+  }
+
+  .stars__star {
+    @apply text-screen-700;
+  }
+
+  .stars__star--on {
+    @apply text-marquee-400;
+  }
+
+  .stars .icon-star {
+    @apply size-4;
+  }
+
+  /* ---------- Rating badge in the movie hero ---------- */
+  .movie-hero__rating {
+    @apply inline-flex items-center gap-1 text-zinc-300 hover:text-white;
+  }
+
+  .movie-hero__rating .icon-star {
+    @apply size-4 text-marquee-400;
+  }
+
+  .movie-hero__rating strong {
+    @apply font-semibold text-white;
+  }
+
+  .movie-hero__rating-count {
+    @apply text-zinc-500;
+  }
+
+  /* ---------- Section layout ---------- */
+  .movie-reviews {
+    @apply scroll-mt-24 border-t border-screen-800 py-12;
+  }
+
+  .movie-reviews__layout {
+    @apply grid items-start gap-8 lg:grid-cols-[22rem_1fr] lg:gap-12;
+  }
+
+  .movie-reviews__aside {
+    @apply space-y-6 lg:sticky lg:top-24;
+  }
+
+  .movie-reviews__list {
+    @apply space-y-4;
+  }
+
+  .movie-reviews__empty {
+    @apply flex flex-col items-center gap-3 rounded-2xl border border-dashed border-screen-700 px-6 py-12 text-center text-zinc-400;
+  }
+
+  .movie-reviews__empty .icon-star {
+    @apply size-10 text-screen-700;
+  }
+
+  /* ---------- Summary ---------- */
+  .review-summary {
+    @apply rounded-2xl border border-screen-800 bg-screen-900 p-6;
+  }
+
+  .review-summary__score {
+    @apply font-display text-7xl leading-none text-white;
+  }
+
+  .review-summary__score span {
+    @apply ml-1 text-3xl text-zinc-500;
+  }
+
+  .review-summary__score--empty {
+    @apply text-zinc-600;
+  }
+
+  .review-summary .stars {
+    @apply mt-2;
+  }
+
+  .review-summary .stars .icon-star {
+    @apply size-5;
+  }
+
+  .review-summary__count {
+    @apply mt-1 text-sm text-zinc-400;
+  }
+
+  .review-summary__bars {
+    @apply mt-5 space-y-1.5;
+  }
+
+  .review-bar {
+    @apply flex items-center gap-3 text-xs text-zinc-400;
+  }
+
+  .review-bar__label {
+    @apply inline-flex w-7 shrink-0 items-center gap-0.5;
+  }
+
+  .review-bar__label .icon-star {
+    @apply size-3 text-marquee-400;
+  }
+
+  .review-bar__total {
+    @apply w-5 shrink-0 text-right tabular-nums;
+  }
+
+  /* <progress> styled as a thin bar */
+  .review-bar__meter {
+    @apply h-2 flex-1 appearance-none overflow-hidden rounded-full border-0 bg-screen-800;
+  }
+
+  .review-bar__meter::-webkit-progress-bar {
+    @apply rounded-full bg-screen-800;
+  }
+
+  .review-bar__meter::-webkit-progress-value {
+    @apply rounded-full bg-marquee-400;
+  }
+
+  .review-bar__meter::-moz-progress-bar {
+    @apply rounded-full bg-marquee-400;
+  }
+
+  /* ---------- Form ---------- */
+  .review-form {
+    @apply rounded-2xl border border-screen-800 bg-screen-900 p-6;
+  }
+
+  .review-form__title {
+    @apply mb-5 text-3xl text-white;
+  }
+
+  .review-form__login {
+    @apply mb-5 text-sm text-zinc-400;
+  }
+
+  .form__textarea {
+    @apply min-h-32 resize-y;
+  }
+
+  /* Interactive star picker: radios are in reverse order (5 → 1) and shown with row-reverse */
+  .star-input {
+    @apply space-y-1.5 border-0 p-0;
+  }
+
+  .star-input__options {
+    @apply flex flex-row-reverse justify-end gap-1;
+  }
+
+  .star-input__radio {
+    @apply sr-only;
+  }
+
+  .star-input__label {
+    @apply cursor-pointer rounded text-screen-700 transition hover:scale-110;
+  }
+
+  .star-input__label .icon-star {
+    @apply size-8;
+  }
+
+  /* Chosen star + all lower ones, and hover preview */
+  .star-input__radio:checked ~ .star-input__label,
+  .star-input__label:hover,
+  .star-input__label:hover ~ .star-input__label {
+    @apply text-marquee-400;
+  }
+
+  .star-input__radio:focus-visible + .star-input__label {
+    @apply outline-2 outline-offset-2 outline-marquee-400;
+  }
+
+  /* ---------- Single review ---------- */
+  .review {
+    @apply rounded-2xl border border-screen-800 bg-screen-900 p-5 sm:p-6;
+  }
+
+  .review__header {
+    @apply flex items-center gap-3;
+  }
+
+  .review__avatar {
+    @apply size-10 shrink-0 rounded-full;
+  }
+
+  .review__byline {
+    @apply min-w-0 flex-1;
+  }
+
+  .review__author {
+    @apply truncate text-sm font-semibold text-zinc-100;
+  }
+
+  .review__date {
+    @apply text-xs text-zinc-500;
+  }
+
+  .review__stars {
+    @apply shrink-0;
+  }
+
+  .review__title {
+    @apply mt-4 font-sans text-lg font-semibold tracking-normal text-white;
+  }
+
+  .review__body {
+    @apply mt-2 space-y-3 leading-relaxed text-zinc-300;
+  }
+
+  /* ---------- Own review + delete ---------- */
+  .review--own {
+    @apply border-marquee-400/30;
+  }
+
+  .review__badge {
+    @apply ml-1.5 inline-flex rounded-full bg-marquee-400/15 px-2 py-px align-middle text-[0.65rem] font-semibold tracking-wide text-marquee-300 uppercase;
+  }
+
+  .review__footer {
+    @apply mt-4 flex flex-wrap items-start gap-x-5 gap-y-3 border-t border-screen-800 pt-3;
+  }
+
+  /* "Bewerken" link */
+  .review-action {
+    @apply inline-flex h-6 items-center gap-1.5 rounded-md text-xs font-medium text-zinc-500 hover:text-marquee-300;
+  }
+
+  .review-action__icon {
+    @apply size-4;
+  }
+
+  /* While the delete confirmation is open, it gets the whole footer */
+  .review__footer:has(.review-delete[open]) .review-action {
+    @apply hidden;
+  }
+
+  .review-delete[open] {
+    @apply w-full;
+  }
+
+  /* ---------- Edit mode (URL ends in #edit-review-{ID}) ---------- */
+  .review-edit {
+    @apply mt-5 hidden scroll-mt-28 border-t border-screen-800 pt-5;
+  }
+
+  .review-edit:target {
+    @apply block;
+  }
+
+  .review:has(.review-edit:target) {
+    @apply border-marquee-400/60;
+  }
+
+  .review:has(.review-edit:target) .review__content,
+  .review:has(.review-edit:target) .review__stars,
+  .review:has(.review-edit:target) .review__footer {
+    @apply hidden;
+  }
+
+  .review-edit__title {
+    @apply mb-5 font-display text-3xl tracking-wide text-white;
+  }
+
+  .review-delete__toggle {
+    @apply inline-flex h-6 cursor-pointer list-none items-center gap-1.5 rounded-md text-xs font-medium text-zinc-500 select-none hover:text-red-300;
+  }
+
+  /* Hide the default disclosure triangle */
+  .review-delete__toggle::-webkit-details-marker {
+    @apply hidden;
+  }
+
+  .review-delete__icon {
+    @apply size-4;
+  }
+
+  .review-delete__label-open {
+    @apply hidden;
+  }
+
+  .review-delete[open] .review-delete__label-closed {
+    @apply hidden;
+  }
+
+  .review-delete[open] .review-delete__label-open {
+    @apply inline;
+  }
+
+  .review-delete[open] .review-delete__toggle {
+    @apply text-zinc-300;
+  }
+
+  .review-delete__confirm {
+    @apply mt-3 flex flex-col gap-3 rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-100 sm:flex-row sm:items-center sm:justify-between;
+  }
+
+  .review-delete__confirm form {
+    @apply shrink-0;
+  }
+}

@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace App;
 
 require_once __DIR__ . '/PostTypes/Movie.php';
+require_once __DIR__ . '/PostTypes/Review.php';
 
 /**
  * Add "… Continued" to the excerpt.
